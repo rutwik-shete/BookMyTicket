@@ -39,7 +39,7 @@ public class AllPanelRecyclerAdapter extends RecyclerView.Adapter<AllPanelRecycl
     public MyViewHolder onCreateViewHolder(ViewGroup parent,
                                            int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.movies_card_layout, parent, false);
+                .inflate(R.layout.all_panel_recycler_card_layout, parent, false);
 
         //view.setOnClickListener(AllEventsFragment.myOnClickListener);
 
