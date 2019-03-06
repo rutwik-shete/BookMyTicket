@@ -1,21 +1,31 @@
 package com.bookmyticket.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ViewFlipper;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bookmyticket.Data.LatestEventData;
+import com.bookmyticket.Data.LatestMoviesData;
+import com.bookmyticket.HomeActivity;
 import com.bookmyticket.R;
+import com.bookmyticket.adapters.AllPanelRecyclerAdapter;
 import com.bookmyticket.adapters.SlidingImageAdapter;
 import com.bookmyticket.interfaces.OnEventListener;
+import com.bookmyticket.model.LatestMovieDataModel;
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 import java.util.ArrayList;
@@ -27,13 +37,18 @@ public class AllEventsFragment extends Fragment {
     public OnEventListener eventListener;
     private int position;
 
-    ViewFlipper ImageFlipper ;
-
     private ArrayList<Integer> ImagesArray;
     private ViewPager mPager;
 
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
+
+    private static RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+    private static RecyclerView recyclerView;
+    private static ArrayList<LatestMovieDataModel> data;
+
+    static View.OnClickListener myOnClickListener;
 
     public AllEventsFragment() {
     }
@@ -64,6 +79,52 @@ public class AllEventsFragment extends Fragment {
         int images[] = {R.drawable.page1,R.drawable.page2,R.drawable.page3};
         ImagesArray = new ArrayList<Integer>();
 
+        //Latest Movies Recycler View
+
+
+        myOnClickListener = new MyOnClickListener(getActivity());
+
+        recyclerView = rootView.findViewById(R.id.LatestMovieRecyclerList);
+        recyclerView.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        data = new ArrayList<LatestMovieDataModel>();
+        for (int i = 0; i < LatestMoviesData.nameArray.length; i++) {
+            data.add(new LatestMovieDataModel(
+                    LatestMoviesData.nameArray[i],
+                    LatestMoviesData.versionArray[i],
+                    LatestMoviesData.id_[i],
+                    LatestMoviesData.drawableArray[i]
+            ));
+        }
+
+        adapter = new AllPanelRecyclerAdapter(data);
+        recyclerView.setAdapter(adapter);
+
+        //Latest Event Recycler View
+
+        recyclerView = rootView.findViewById(R.id.LatestEventRecyclerList);
+        recyclerView.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        data = new ArrayList<LatestMovieDataModel>();
+        for (int i = 0; i < LatestEventData.nameArray.length; i++) {
+            data.add(new LatestMovieDataModel(
+                    LatestEventData.nameArray[i],
+                    LatestEventData.versionArray[i],
+                    LatestEventData.id_[i],
+                    LatestEventData.drawableArray[i]
+            ));
+        }
+
+        adapter = new AllPanelRecyclerAdapter(data);
+        recyclerView.setAdapter(adapter);
 
         init(images,rootView);
         return rootView;
@@ -85,11 +146,6 @@ public class AllEventsFragment extends Fragment {
 
         indicator.setViewPager(mPager);
 
-       // final float density = getResources().getDisplayMetrics().density;
-
-//Set circle indicator radius
-        //indicator.setRadius(5 * density);
-
         NUM_PAGES =images.length;
 
         // Auto start of viewpager
@@ -110,25 +166,36 @@ public class AllEventsFragment extends Fragment {
             }
         }, 4000, 3000);
 
-        // Pager listener over indicator
-        /*indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override
-            public void onPageSelected(int position) {
-                currentPage = position;
-
-            }
-
-            @Override
-            public void onPageScrolled(int pos, float arg1, int arg2) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int pos) {
-
-            }
-        });*/
-
     }
+
+    private static class MyOnClickListener implements View.OnClickListener {
+
+        private final Context context;
+
+        private MyOnClickListener(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        public void onClick(View v) {
+            removeItem(v);
+        }
+
+        private void removeItem(View v) {
+            int selectedItemPosition = recyclerView.getChildPosition(v);
+            RecyclerView.ViewHolder viewHolder
+                    = recyclerView.findViewHolderForPosition(selectedItemPosition);
+            TextView textViewName
+                    = (TextView) viewHolder.itemView.findViewById(R.id.textViewName);
+            String selectedName = (String) textViewName.getText();
+            int selectedItemId = -1;
+            for (int i = 0; i < LatestMoviesData.nameArray.length; i++) {
+                if (selectedName.equals(LatestMoviesData.nameArray[i])) {
+                    selectedItemId = LatestMoviesData.id_[i];
+                }
+            }
+
+        }
+    }
+
 }
