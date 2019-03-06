@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".HomeActivity">
+    <com.flyco.tablayout.SlidingTabLayout
+        android:id="@+id/tabview"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:visibility="visible"
+        app:tl_indicator_color="@color/white_transparent"
+        app:tl_indicator_style="BLOCK"
+        app:tl_textSelectColor="@color/white"
+        app:tl_textUnselectColor="@color/white"
+        android:background="@color/black"
+        app:tl_textsize="@dimen/_13sdp" />
+    <com.bookmyticket.utils.NonSwipeableViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:visibility="visible"/>
+
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/Footer"
+        android:gravity="center" >
+
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:src="@drawable/ic_home"
+                android:background="@color/TransperantButton"/>
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:src="@drawable/ic_magnifier"
+                android:background="@color/TransperantButton"/>
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:src="@drawable/ic_qrcode"
+                android:background="@color/TransperantButton"/>
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:src="@drawable/ic_offers"
+                android:background="@color/TransperantButton"/>
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:src="@drawable/ic_profile"
+                android:background="@color/TransperantButton"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+
+</LinearLayout>

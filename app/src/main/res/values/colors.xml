@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#040C2D</color>
+    <color name="colorPrimaryDark">#1d2442</color>
+    <color name="colorAccent">#6495ED</color>
+
+
+    <color name="Header">#262735</color>
+    <color name="HeaderText">#FFFFFF</color>
+    <color name="Footer">#FFFFFF</color>
+    <color name="TransperantButton">#00FFFFFF</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="text_color">#737373</color>
+    <color name="text_hint">#717171</color>
+    <color name="header_bg_color">#E8E8E8</color>
+    <color name="transparent">#00000000</color>
+    <color name="white_transparent">#40FFFFFF</color>
+    <color name="white_milky">#FEFCFF</color>
+    <color name="title_white">#f8f4f4</color>
+    <color name="doc_scan_background">#FF000000</color>
+    <color name="shadow">#E0E0E0</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="toolbarcolor">#A02962EE</color>
+    <color name="search_header">#e8d1db</color>
+    <color name="data_color">#254174</color>
+    <color name="category_list_bg">#f4f4f4</color>
+    <color name="direction_list_bg">#FF0F7D7F</color>
+    <color name="bottom_list_bg">#3b494a</color>
+    <color name="window_preview_bg">#292929</color>
+    <color name="filter_title">#9a9b9f</color>
+    <color name="search_bg">#1d96c1</color>
+
+
+    <color name="ios_white">#aaFFFFFF</color>
+
+
+    <!--Rainbow Colors-->
+    <color name="violet">#9400D3</color>
+    <color name="indigo">#4B0082</color>
+    <color name="blue">#2966bf</color>
+    <color name="green">#23b574</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="orange">#FFA500</color>
+    <color name="red">#FF0000</color>
+    <color name="sky_blue">#6495ED</color>
+    <color name="black_transparent">#99000000</color>
+    <color name="black_transparent_light">#40000000</color>
+</resources>

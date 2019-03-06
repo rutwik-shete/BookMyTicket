@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <!-- Header aligned to top -->
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/Header"
+        android:gravity="center" >
+
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:id="@+id/TextAll"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="33.33"
+                android:text="All"
+                android:textColor="@color/HeaderText"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:id="@+id/MoviesText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Movies"
+                android:layout_weight="33.33"
+                android:textColor="@color/HeaderText"
+                android:textSize="20dp"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/EventsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="33.33"
+                android:text="Events"
+                android:textColor="@color/HeaderText"
+                android:textSize="20dp"
+                android:textAlignment="center"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- Footer aligned to bottom -->
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/Footer"
+        android:gravity="center" >
+
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:src="@drawable/ic_home"
+                android:background="@color/TransperantButton"/>
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:src="@drawable/ic_magnifier"
+                android:background="@color/TransperantButton"/>
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:src="@drawable/ic_qrcode"
+                android:background="@color/TransperantButton"/>
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:src="@drawable/ic_offers"
+                android:background="@color/TransperantButton"/>
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:src="@drawable/ic_profile"
+                android:background="@color/TransperantButton"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- Scrollable Item below header and above footer -->
+    <ScrollView
+        android:id="@+id/scrollableContents"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/footer"
+        android:background="#005"
+        android:layout_below="@id/header" >
+
+        <!-- Inflate the contents of the ScrollView dynamicaly -->
+
+    </ScrollView>
+
+</RelativeLayout>
